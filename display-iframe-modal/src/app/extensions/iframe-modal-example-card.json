@@ -1,0 +1,11 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Edit Tax Entity Address",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "DisplayIframe.jsx"
+    },
+    "objectTypes": [{ "name": "p_fbc_accounts" }]
+  }
+}

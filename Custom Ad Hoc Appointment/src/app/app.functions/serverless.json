@@ -1,0 +1,12 @@
+{
+  "appFunctions": {
+    "myFunc": {
+      "file": "updatePropertyExample.js",
+      "secrets": []
+    },
+    "getAssociatedContact": {
+      "file": "getAssociatedContact.js",
+      "secrets": []
+    }
+  }
+}

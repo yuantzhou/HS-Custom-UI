@@ -9,8 +9,6 @@ import {
   Flex,
   Select,
   Text,
-  Button,
-  Input,
 } from '@hubspot/ui-extensions';
 
 import { CrmStageTracker, CrmPropertyList } from '@hubspot/ui-extensions/crm';
@@ -29,11 +27,6 @@ const Extension = ({ actions, runServerlessFunction }) => {
   const [lifecycleStage, setLifecycleStage] = useState<{ options } | null>(
     null
   );
-  const[updatedLifCycleStage, setUpdatedLifecycleStage] = useState<{ options } | null>(
-    null
-  );
-  const [updatedFirstName, setUpdatedFirstName] = useState<string>('');
-  const [updatedLastName, setUpdatedLastName] = useState<string>('');
 
   useEffect(() => {
     fetchCrmObjectProperties(['firstname', 'lastname']).then((properties) => {
@@ -53,46 +46,21 @@ const Extension = ({ actions, runServerlessFunction }) => {
         }
       }
     );
-   
   }, []);
-  const monitorChange = (property, e)=>{
-    if(property=="firstname"){
-     setUpdatedFirstName(e) 
-    }
-    if (property=="lastname"){
-      setUpdatedLastName(e)
-    }
-  }
-  const saveChanges = () => {
-    // console.log(updatedLifCycleStage);
-    // runServerlessFunction({
-    //   name: 'updateLifecycleStage',
-    //   parameters: updatedLifCycleStage,
-    //   somethingElse:"",
-    //   propertiesToSend: ['hs_object_id'],
-    // }).then(() => {
-    //   refreshObjectProperties();
-    // });
+
+  const onChange = (stage) => {
+    console.log(stage);
     runServerlessFunction({
-      name: 'updateMutiProperties',
-      parameters: {
-        "firstname":updatedFirstName,
-        "lastname" : updatedLastName
-      },
-      somethingElse:"",
+      name: 'updateLifecycleStage',
+      parameters: { stage },
       propertiesToSend: ['hs_object_id'],
     }).then(() => {
       refreshObjectProperties();
     });
   };
-  const changeInLifeCycle = (stage) => {
-      console.log(stage);
-      setUpdatedLifecycleStage(stage);
-  }
 
   return (
     <>
-    
       <Tile>
         <Flex direction="column" gap="sm">
           <Heading>
@@ -109,7 +77,7 @@ const Extension = ({ actions, runServerlessFunction }) => {
           <DescriptionList direction="row">
             {Object.entries(properties).map(([key, value]) => (
               <DescriptionListItem label={key}>
-                <Input label={''} value={value} name={key} onChange={(e) =>monitorChange(key, e)}></Input>
+                <Text format={{ fontWeight: 'bold' }}>{value}</Text>
               </DescriptionListItem>
             ))}
           </DescriptionList>
@@ -130,15 +98,12 @@ const Extension = ({ actions, runServerlessFunction }) => {
           </Text>
           <Divider />
           <Select
-          onChange={changeInLifeCycle}
+            onChange={onChange}
             options={lifecycleStage && lifecycleStage.options}
             label="Lifecycle stage"
             placeholder="Update lifecycle stage"
           />
         </Flex>
-        <Button type="submit" onClick={saveChanges}>
-            Click me
-          </Button>
       </Tile>
     </>
   );
