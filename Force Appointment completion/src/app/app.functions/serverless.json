@@ -1,0 +1,12 @@
+{
+  "appFunctions": {
+    "checkIncompletedAppointments": {
+      "file": "checkIncompletedAppointments.js",
+      "secrets": []
+    },
+    "GetOwner": {
+      "file": "GetOwner.js",
+      "secrets": []
+    }
+  }
+}

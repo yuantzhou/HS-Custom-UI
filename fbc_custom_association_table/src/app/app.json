@@ -1,0 +1,19 @@
+{
+  "name": "Tickets",
+  "description": "extend number of tickets on account",
+  "uid": "fbc-custom-association-table",
+  "scopes": ["crm.objects.contacts.read", "crm.objects.contacts.write","crm.objects.custom.read"],
+  "public": false,
+  "extensions": {
+    "crm": {
+      "cards": [
+        {
+          "file": "extensions/fbc-custom-association-table.json"
+        }
+      ]
+    }
+  },
+  "webhooks": {
+    "file": "./webhooks/webhooks.json"
+  }
+}

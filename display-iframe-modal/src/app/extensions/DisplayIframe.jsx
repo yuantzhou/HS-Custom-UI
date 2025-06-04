@@ -1,5 +1,7 @@
 import { Link, Button, Text, Box, Flex, hubspot, Input } from "@hubspot/ui-extensions";
-
+import {
+  ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, WorkWeek, Month, Agenda, Inject
+} from '@syncfusion/ej2-react-schedule';
 import { CrmActionButton } from '@hubspot/ui-extensions/crm';
 
 // Define the extension to be run within the Hubspot CRM
@@ -14,7 +16,7 @@ hubspot.extend((
 const Extension = ({ openIframe}) => {
   const handleClick = () => {
     openIframe({
-      uri: "https://wikipedia.com/", // this is a relative link. Some links will be blocked since they don't allow iframing
+      uri: "https://meetings.hubspot.com/yzhou1", // this is a relative link. Some links will be blocked since they don't allow iframing
       height: 1000,
       width: 1000,
       title: 'Wikipedia in an Iframe',
@@ -35,9 +37,7 @@ const Extension = ({ openIframe}) => {
         <Text>
          A field to put something 
         </Text> 
-        <Text>
-          Hello {firstName} 
-        </Text>
+          
         <Input>
         </Input>
         <CrmActionButton
@@ -55,6 +55,7 @@ const Extension = ({ openIframe}) => {
             Click me
           </Button>
         </Box>
+        
       </Flex>
     </>
   );

@@ -1,0 +1,12 @@
+{
+  "appFunctions": {
+     "quote-function": {
+      "file": "function.js",
+      "secrets": [],
+      "endpoint": {
+        "path": "fetch-quote",
+        "method": ["GET"]
+       }
+    }
+  }
+}

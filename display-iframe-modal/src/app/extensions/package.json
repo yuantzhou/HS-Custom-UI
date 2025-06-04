@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@hubspot/ui-extensions": "latest",
+    "@syncfusion/ej2-react-schedule": "^29.1.34",
     "react": "^18.2.0"
   },
   "devDependencies": {

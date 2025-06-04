@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "FBC Tickets",
+    "uid": "fbc-custom-association-table",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "fbc-custom-association-table.jsx"
+    },
+    "objectTypes": [{ "name": "p_fbc_accounts" }]
+  }
+}

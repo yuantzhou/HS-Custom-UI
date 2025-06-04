@@ -1,0 +1,12 @@
+{
+  "type": "crm-card",
+  "data": {
+    "title": "Appointment confirmation",
+    "uid": "Appointment_confirmation_card",
+    "location": "crm.record.tab",
+    "module": {
+      "file": "Appointment_confirmation.jsx"
+    },
+    "objectTypes": [{ "name": "contacts" }]
+  }
+}
