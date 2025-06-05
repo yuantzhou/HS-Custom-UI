@@ -1,28 +1,35 @@
-const hubspot = require('@hubspot/api-client');
-
+const axios = require('axios');
 
 exports.main = async (context = {}) => {
-    const hubspotClient = new hubspot.Client({
-        accessToken: process.env['PRIVATE_APP_ACCESS_TOKEN']
-    });
- 
-const email = context.parameters.context.user.email;
-const after = undefined;
-const limit = 100;
-const archived = false;
-let owners={}
-
-try {
-    // apicall 2= for owner
- 
-  const apiResponse2= await hubspotClient.crm.owners.ownersApi.getPage(email, after, limit, archived);
-
-owners.AppointmentBooker= apiResponse2.results[0].id
-  return owners
+  const email = context.parameters?.context?.user?.email;
   
-} catch (e) {
-  e.message === 'HTTP request failed'
-    ? console.error(JSON.stringify(e.response, null, 2))
-    : console.error(e)
-}
+  try {
+    const response = await axios.get('https://api.hubapi.com/crm/v3/owners', {
+      headers: {
+        'Authorization': `Bearer ${process.env['PRIVATE_APP_ACCESS_TOKEN']}`,
+        'Content-Type': 'application/json'
+      },
+      params: {
+        limit: 100,
+        archived: false
+      }
+    });
+    
+    // Find owner by email
+    const owner = response.data.results.find(owner => owner.email === email);
+    
+    return {
+      statusCode: 200,
+      body: {
+        AppointmentBooker: owner ? owner.id : null
+      }
+    };
+    
+  } catch (error) {
+    console.error('Error fetching owners:', error.message);
+    return {
+      statusCode: 500,
+      body: { error: error.message }
+    };
+  }
 }

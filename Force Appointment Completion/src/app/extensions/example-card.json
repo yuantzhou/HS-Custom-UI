@@ -2,12 +2,12 @@
   "type": "crm-card",
   "data": {
     "title": "Force Appointment Completion",
-    "uid": "Force-Appointment-Completion",
+    "uid": "Force_Appointment_Completion",
     "location": "crm.record.tab",
     "module": {
-      "file": "ForceAppointmentCompletion.jsx"
+      "file": "Force_Appointment_Completion.jsx"
     },
-    "objectTypes": [
+     "objectTypes": [
       {
         "name": "p_fbc_accounts"
       },
