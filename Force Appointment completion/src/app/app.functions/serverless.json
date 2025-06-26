@@ -8,6 +8,10 @@
     "checkIncompletedAppointments": {
       "file": "checkIncompletedAppointments.js",
       "secrets": []
+    },
+    "GetContact": {
+      "file": "GetContact.js",
+      "secrets": []
     }
     
   }

@@ -16,6 +16,9 @@
       },
       {
         "name": "p_tax_entities"
+      },
+      {
+        "name": "deals"
       }
     ]
   }
